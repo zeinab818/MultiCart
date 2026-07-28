@@ -11,14 +11,17 @@ import {
   NavigationMenuList,
   NavigationMenuTrigger,
 } from "@/components/ui/navigation-menu";
+import { Sheet, SheetTrigger } from "@/components/ui/sheet";
+
 import {
-  Sheet,
-  
-  SheetTrigger,
-} from "@/components/ui/sheet"
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuTrigger,
+} from "@/components/ui/dropdown-menu";
 
 import Languages from "./Languages";
-import LeftNavbar from "./LeftNavbar"
+import LeftNavbar from "./LeftNavbar";
 import RightNavbar from "./RightNavbar";
 import Features from "./Featuers";
 import Products from "./Products";
@@ -28,7 +31,8 @@ import Cart from "./Cart/Cart";
 
 export default function NavbarMenu() {
   return (
-    <div className="flex 
+    <div
+      className="flex 
       items-center 
       justify-center 
       sm:justify-between
@@ -37,21 +41,19 @@ export default function NavbarMenu() {
       py-4
       sm:py-8
       bg-white 
-      shadow-md">
-
-
+      shadow-md"
+    >
       {/* Left */}
       <div className="flex items-center gap-8 sm:gap-6  cursor-pointer  ">
         <Sheet>
-        <SheetTrigger className="cursor-pointer">
-          <i className="ri-bar-chart-horizontal-line text-[28px]"></i></SheetTrigger>
-        
-        <LeftNavbar/>
+          <SheetTrigger className="cursor-pointer">
+            <i className="ri-bar-chart-horizontal-line text-[28px]"></i>
+          </SheetTrigger>
+
+          <LeftNavbar />
         </Sheet>
         <Logo />
       </div>
-
-
 
       {/* Center */}
       <NavigationMenu
@@ -65,31 +67,28 @@ export default function NavbarMenu() {
         capitalize
         "
       >
-
-        <NavigationMenuList className="flex       
- items-center gap-5  ">
-
-
-        <>
-          {/* Home */}
-          <NavigationMenuItem className="hidden lg:block hover:bg-transparent " >
-            <NavigationMenuLink
-              render={
-                <Link
-                  href="/"
-                  className="transition-colors text-[17px] hover:text-(--main-color) hover:bg-transparent"
-                >
-                  Home
-                </Link>
-              }
-            />
-          </NavigationMenuItem>
+        <NavigationMenuList
+          className="flex       
+ items-center gap-5  "
+        >
+          <>
+            {/* Home */}
+            <NavigationMenuItem className="hidden lg:block hover:bg-transparent ">
+              <NavigationMenuLink
+                render={
+                  <Link
+                    href="/"
+                    className="transition-colors text-[17px] hover:text-(--main-color) hover:bg-transparent"
+                  >
+                    Home
+                  </Link>
+                }
+              />
+            </NavigationMenuItem>
             {/* Feature */}
-          <NavigationMenuItem className="relative hidden lg:block hover:bg-transparent ">
-
-
-            <span
-              className="
+            <NavigationMenuItem className="relative hidden lg:block hover:bg-transparent ">
+              <span
+                className="
               absolute cursor-pointer
               -top-4
               left-1/2
@@ -102,12 +101,10 @@ export default function NavbarMenu() {
               uppercase
               text-white
               "
-            >
-
-              New
-
-              <span
-                className="
+              >
+                New
+                <span
+                  className="
                 absolute
                 left-2/3
                 top-full
@@ -117,148 +114,112 @@ export default function NavbarMenu() {
                 border-t-(--main-color)
                 cursor-pointer
                 "
+                />
+              </span>
+
+              <NavigationMenuTrigger className="text-[17px] cursor-pointer  hover:text-(--main-color)">
+                Feature
+              </NavigationMenuTrigger>
+
+              <NavigationMenuContent className="!overflow-visible">
+                <div className="fixed font-montserrat left-1/2 -translate-x-1/2 bg-white px-10 py-8  w-[80vw] max-w-[1600px]">
+                  <Features />
+                </div>
+              </NavigationMenuContent>
+            </NavigationMenuItem>
+
+            {/* Shop */}
+            <NavigationMenuItem className="hidden lg:block hover:bg-transparent ">
+              <NavigationMenuTrigger className="text-[17px] cursor-pointer  hover:text-(--main-color) hover:bg-transparent">
+                Shop
+              </NavigationMenuTrigger>
+
+              <NavigationMenuContent className="font-montserrat">
+                <Shop />
+              </NavigationMenuContent>
+            </NavigationMenuItem>
+            {/* Product */}
+            <NavigationMenuItem className="hidden lg:block hover:bg-transparent">
+              <NavigationMenuTrigger className="cursor-pointer hover:bg-transparent text-[17px] hover:text-(--main-color)">
+                Product
+              </NavigationMenuTrigger>
+
+              <NavigationMenuContent className="!overflow-visible">
+                <div className="fixed font-montserrat left-1/2 -translate-x-1/2 bg-white px-10 py-8  w-[80vw] max-w-[1600px]">
+                  <Products />
+                </div>
+              </NavigationMenuContent>
+            </NavigationMenuItem>
+
+            {/* Pages */}
+            <NavigationMenuItem className="hidden lg:block hover:bg-transparent">
+              <NavigationMenuTrigger className="cursor-pointer hover:bg-transparent text-[17px] hover:text-(--main-color)">
+                Pages
+              </NavigationMenuTrigger>
+
+              <NavigationMenuContent className="overflow-visible p-0">
+                <div className="fixed">
+                  <Pages />
+                </div>
+              </NavigationMenuContent>
+            </NavigationMenuItem>
+
+            <NavigationMenuItem className="hidden lg:block hover:bg-transparent">
+              <NavigationMenuTrigger className="cursor-pointer hover:bg-transparent text-[17px] hover:text-(--main-color)">
+                Blogs
+              </NavigationMenuTrigger>
+
+              <NavigationMenuContent className="overflow-visible p-0">
+                <div className="fixed">
+                  <ul className="w-56 p-3 space-y-3 text-gray-600">
+                    <li className="link-line-small cursor-pointer ">
+                      Left Sidebar
+                    </li>
+
+                    <li className="link-line-small cursor-pointer ">
+                      Right Sidebar
+                    </li>
+
+                    <li className="link-line-small cursor-pointer ">
+                      No Sidebar
+                    </li>
+
+                    <li className="link-line-small cursor-pointer ">
+                      Blog Details
+                    </li>
+                  </ul>
+                </div>
+              </NavigationMenuContent>
+            </NavigationMenuItem>
+
+            <NavigationMenuItem className=" lg:hidden ">
+              <Sheet>
+                <SheetTrigger>
+                  <i className="ri-bar-chart-horizontal-line text-[28px] hover:bg-transparent cursor-pointer text-(--main-color)" />
+                </SheetTrigger>
+
+                <RightNavbar />
+              </Sheet>
+            </NavigationMenuItem>
+          </>
+
+          <>
+            {/* Search */}
+            <NavigationMenuItem className="ml-3 hidden md:block">
+              <NavigationMenuLink
+                className="p-0 text-2xl text-[#6a6a6a] hover:text-(--main-color)"
+                render={
+                  <Link href="/search">
+                    <i className="ri-search-line"></i>
+                  </Link>
+                }
               />
+            </NavigationMenuItem>
 
-            </span>
-
-
-
-            <NavigationMenuTrigger className="text-[17px] cursor-pointer  hover:text-(--main-color)">
-              Feature
-            </NavigationMenuTrigger>
-
-
-<NavigationMenuContent className="!overflow-visible">
-  <div className="fixed font-montserrat left-1/2 -translate-x-1/2 bg-white px-10 py-8  w-[80vw] max-w-[1600px]">
-    <Features />
-  </div>
-</NavigationMenuContent>
-          </NavigationMenuItem>
-
-
-       {/* Shop */}
-<NavigationMenuItem className="hidden lg:block hover:bg-transparent ">
-
-  <NavigationMenuTrigger className="text-[17px] cursor-pointer  hover:text-(--main-color) hover:bg-transparent">
-    Shop
-  </NavigationMenuTrigger>
-
-
-  <NavigationMenuContent className="font-montserrat">
-
-    <Shop/>
-
-  </NavigationMenuContent>
-
-</NavigationMenuItem>
-              {/* Product */}
-          <NavigationMenuItem className="hidden lg:block hover:bg-transparent">
-
-
-            <NavigationMenuTrigger className="cursor-pointer hover:bg-transparent text-[17px] hover:text-(--main-color)">
-              Product
-      </NavigationMenuTrigger>
-
-
-
-           <NavigationMenuContent className="!overflow-visible">
-              <div className="fixed font-montserrat left-1/2 -translate-x-1/2 bg-white px-10 py-8  w-[80vw] max-w-[1600px]">
-                <Products />
-              </div>
-            </NavigationMenuContent>
-
-
-
-          </NavigationMenuItem>
-        
-          {/* Pages */}
-          <NavigationMenuItem className="hidden lg:block hover:bg-transparent">
-
-
-            <NavigationMenuTrigger className="cursor-pointer hover:bg-transparent text-[17px] hover:text-(--main-color)">
-              Pages
-            </NavigationMenuTrigger>
-
-
-
-        <NavigationMenuContent className="overflow-visible p-0">
-  <div className="fixed">
-    <Pages />
-  </div>
-</NavigationMenuContent>
-
-          </NavigationMenuItem>
-
-             <NavigationMenuItem className="hidden lg:block hover:bg-transparent">
-
-
-            <NavigationMenuTrigger className="cursor-pointer hover:bg-transparent text-[17px] hover:text-(--main-color)">
-              Blogs
-            </NavigationMenuTrigger>
-
-
-
-        <NavigationMenuContent className="overflow-visible p-0">
-  <div className="fixed">
-    <ul className="w-56 p-3 space-y-3 text-gray-600">
-
-      <li className="link-line-small cursor-pointer ">
-        Left Sidebar
-      </li>
-
-      <li className="link-line-small cursor-pointer ">
-        Right Sidebar
-      </li>
-
-      <li className="link-line-small cursor-pointer ">
-        No Sidebar
-      </li>
-
-      <li className="link-line-small cursor-pointer ">
-        Blog Details
-      </li>
-
-    </ul>
-  </div>
-</NavigationMenuContent>
-
-          </NavigationMenuItem>
-         
-          <NavigationMenuItem className=" lg:hidden ">
-          <Sheet >
-            <SheetTrigger >
-            
-        <i className="ri-bar-chart-horizontal-line text-[28px] hover:bg-transparent cursor-pointer text-(--main-color)" />
-    
-    </SheetTrigger>
-
-    <RightNavbar />
-  </Sheet>
-</NavigationMenuItem>
-        </>
-         
-        <>
-          {/* Search */}
-          <NavigationMenuItem className="ml-3 hidden md:block">
-
-            <NavigationMenuLink
-              className="p-0 text-2xl text-[#6a6a6a] hover:text-(--main-color)"
-              render={
-                <Link href="/search">
-                  <i className="ri-search-line"></i>
-                </Link>
-              }
-            />
-
-          </NavigationMenuItem>
-
-
-
-          {/* Language */}
-          <NavigationMenuItem className="hidden md:block">
-
-            <NavigationMenuTrigger
-              className="
+            {/* Language */}
+            <NavigationMenuItem className="hidden md:block">
+              <NavigationMenuTrigger
+                className="
               bg-transparent
               p-0
               text-2xl
@@ -268,37 +229,27 @@ export default function NavbarMenu() {
               cursor-pointer
            
               "
-            >
+              >
+                <i className="ri-equalizer-2-line"></i>
+              </NavigationMenuTrigger>
 
-              <i className="ri-equalizer-2-line"></i>
+              <NavigationMenuContent>
+                <ul className="w-40 p-2">
+                  <Languages />
+                </ul>
+              </NavigationMenuContent>
+            </NavigationMenuItem>
 
-            </NavigationMenuTrigger>
+            {/* Cart */}
+            <NavigationMenuItem className="hidden md:block">
+              <Sheet>
+                <SheetTrigger>
+                  <NavigationMenuLink className="p-0 text-2xl text-[#6a6a6a]">
+                    <div className="relative cursor-pointer">
+                      <i className="ri-shopping-cart-line"></i>
 
-
-
-            <NavigationMenuContent>
-
-              <ul className="w-40 p-2">
-
-                <Languages />
-
-              </ul>
-
-            </NavigationMenuContent>
-
-
-          </NavigationMenuItem>
-
-          {/* Cart */}
-          <NavigationMenuItem className="hidden md:block">
-  <Sheet>
-    <SheetTrigger>
-      <NavigationMenuLink className="p-0 text-2xl text-[#6a6a6a]">
-        <div className="relative cursor-pointer">
-          <i className="ri-shopping-cart-line"></i>
-
-          <span
-            className="
+                      <span
+                        className="
               absolute
               -right-2
               -top-2
@@ -313,22 +264,20 @@ export default function NavbarMenu() {
               font-bold
               text-white
             "
-          >
-            2
-          </span>
-        </div>
-      </NavigationMenuLink>
-    </SheetTrigger>
+                      >
+                        2
+                      </span>
+                    </div>
+                  </NavigationMenuLink>
+                </SheetTrigger>
 
-    <Cart />
-  </Sheet>
-</NavigationMenuItem>
-
-        </>
+                <Cart />
+              </Sheet>
+            </NavigationMenuItem>
+          </>
         </NavigationMenuList>
-
       </NavigationMenu>
-     {/* Mobile Bottom Navigation */}
+      {/* Mobile Bottom Navigation */}
       <div
         className="
           fixed
@@ -362,86 +311,69 @@ export default function NavbarMenu() {
           <i className="ri-heart-line text-[22px]" />
         </Link>
 
+        {/* Cart */}
+        <Sheet>
+          <SheetTrigger
+            render={
+              <button className="relative flex flex-col items-center hover:text-(--main-color)">
+                <i className="ri-shopping-cart-line text-[22px] cursor-pointer" />
 
-       {/* Cart */}
-<Sheet>
-  <SheetTrigger
-  render={
-    <button className="relative flex flex-col items-center hover:text-(--main-color)">
-      <i className="ri-shopping-cart-line text-[22px] cursor-pointer" />
+                <span className="absolute -top-1 left-3 flex h-4 w-4 items-center justify-center rounded-full bg-(--main-color) text-[10px] text-white">
+                  2
+                </span>
+              </button>
+            }
+          />
 
-      <span className="absolute -top-1 left-3 flex h-4 w-4 items-center justify-center rounded-full bg-(--main-color) text-[10px] text-white">
-        2
-      </span>
-    </button>
-  }
-/>
-
-  <Cart />
-</Sheet>
+          <Cart />
+        </Sheet>
         {/* User */}
-           <div className="group relative cursor-pointer">
+        <div className="group relative cursor-pointer">
+          <DropdownMenu>
+            <DropdownMenuTrigger>
+              <button>
+                <i className="ri-user-line text-[22px] cursor-pointer" />
+              </button>
+            </DropdownMenuTrigger>
 
-            <div className="flex items-center gap-2 transition-colors hover:text-[var(--main-color)]">
-              <i className="ri-user-line text-[22px]" ></i>
-        
-            
-            </div>
+            <DropdownMenuContent align="end" className="rounded-none px-5 py-3">
+              <DropdownMenuItem>
+                <Link href="#" className="cursor-pointer">
+                  Login
+                </Link>
+              </DropdownMenuItem>
 
-
-            {/* Dropdown */}
-            <div className="absolute bottom-full hidden z-50 mt-2 right-0 w-40 rounded-md border border-gray-200 bg-white py-2 text-gray-700 shadow-lg group-hover:block">
-
-              <Link
-                href="/login"
-                className="block px-4 py-2 transition hover:bg-gray-100"
-              >
-                Login
-              </Link>
-
-              <Link
-                href="/register"
-                className="block px-4 py-2 transition hover:bg-gray-100"
-              >
-                Register
-              </Link>
-
-            </div>
-
-          </div>
+              <DropdownMenuItem>
+                <Link href="#" className="cursor-pointer">
+                  Register
+                </Link>
+              </DropdownMenuItem>
+            </DropdownMenuContent>
+          </DropdownMenu>
+        </div>
 
         {/* Menu */}
-         <div className="group relative cursor-pointer">
-
-            <div className="flex items-center gap-2 transition-colors hover:text-[var(--main-color)]">
-         
-                      <i className="ri-equalizer-2-line text-[22px]"></i>
-
-            
-            </div>
-
-
-            {/* Dropdown */}
-            <div className="absolute bottom-full right-0  z-50  hidden w-40 rounded-md border border-gray-200 bg-white py-2 text-gray-700 shadow-lg group-hover:block">
-
-                  
-
-                <Languages />
-
-            </div>
-
+        <div className="group relative cursor-pointer">
+          <div className="flex items-center gap-2 transition-colors hover:text-[var(--main-color)]">
+            <i className="ri-equalizer-2-line text-[22px]"></i>
           </div>
 
-      </div>
-                
+          <DropdownMenu>
+            <DropdownMenuTrigger>
+              <button className="cursor-pointer">
+                <i className="ri-equalizer-2-line text-[22px]" />
+              </button>
+            </DropdownMenuTrigger>
 
+            <DropdownMenuContent align="end" className="rounded-none w-40 p-0">
+              <Languages />
+            </DropdownMenuContent>
+          </DropdownMenu>
+        </div>
+      </div>
     </div>
   );
 }
-
-
-
-
 
 function MenuItem({
   href,
@@ -450,10 +382,8 @@ function MenuItem({
   href: string;
   children: React.ReactNode;
 }) {
-
   return (
     <li>
-
       <NavigationMenuLink
         render={
           <Link
@@ -472,7 +402,6 @@ function MenuItem({
           </Link>
         }
       />
-
     </li>
   );
 }
