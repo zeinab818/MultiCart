@@ -18,7 +18,7 @@ function Item({
   children: React.ReactNode;
 }) {
   return (
-    <Accordion nav>
+    <Accordion >
       <AccordionItem value={title} className="border-none">
 
         <AccordionTrigger
