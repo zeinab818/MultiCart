@@ -331,9 +331,9 @@ export default function NavbarMenu() {
         <div className="group relative cursor-pointer">
           <DropdownMenu>
             <DropdownMenuTrigger>
-              <button>
+       
                 <i className="ri-user-line text-[22px] cursor-pointer" />
-              </button>
+      
             </DropdownMenuTrigger>
 
             <DropdownMenuContent align="end" className="rounded-none px-5 py-3">
@@ -353,23 +353,22 @@ export default function NavbarMenu() {
         </div>
 
         {/* Menu */}
-        <div className="group relative cursor-pointer">
-          <div className="flex items-center gap-2 transition-colors hover:text-[var(--main-color)]">
-            <i className="ri-equalizer-2-line text-[22px]"></i>
-          </div>
+      <div className="relative">
+  <DropdownMenu>
+    <DropdownMenuTrigger>
+  
+        <i className="ri-equalizer-2-line text-[22px] cursor-pointer" />
+  
+    </DropdownMenuTrigger>
 
-          <DropdownMenu>
-            <DropdownMenuTrigger>
-              <button className="cursor-pointer">
-                <i className="ri-equalizer-2-line text-[22px]" />
-              </button>
-            </DropdownMenuTrigger>
-
-            <DropdownMenuContent align="end" className="rounded-none w-40 p-0">
-              <Languages />
-            </DropdownMenuContent>
-          </DropdownMenu>
-        </div>
+    <DropdownMenuContent
+      align="end"
+      className="w-40 rounded-none p-0"
+    >
+      <Languages />
+    </DropdownMenuContent>
+  </DropdownMenu>
+</div>
       </div>
     </div>
   );
