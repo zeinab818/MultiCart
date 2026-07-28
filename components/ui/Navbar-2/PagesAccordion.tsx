@@ -18,7 +18,7 @@ function Item({
   children: React.ReactNode;
 }) {
   return (
-    <Accordion type="single" collapsible>
+    <Accordion >
       <AccordionItem value={title} className="border-none">
 
         <AccordionTrigger

@@ -91,7 +91,7 @@ export default function RightNavbar() {
 
       <div className="flex-1 overflow-y-auto">
 
-        <SheetClose asChild>
+        <SheetClose>
           <Link
             href="#"
             className="block border-b px-5 py-4 hover:text-(--main-color)"

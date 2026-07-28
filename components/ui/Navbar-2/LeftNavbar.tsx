@@ -47,7 +47,7 @@ export default function LeftNavbar() {
             <span className="font-montserrat text-2xl">Back</span>
           </button>
         ) : (
-          <SheetClose asChild>
+          <SheetClose  >
             <div className="flex items-center gap-2 cursor-pointer">
               <span className="text-2xl font-light">❮</span>
               <span className="font-montserrat text-2xl">Back</span>
